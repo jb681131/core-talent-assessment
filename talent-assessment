@@ -15,7 +15,7 @@ if ($argv[1] === 'start') {
 \n");
     exec('php composer.phar install');
     $zip = new ZipArchive;
-    if ($zip->open(SRC_ZIP_DIR) === true) {
+    if ($zip->open(SRC_ZIP_DIR, ZIPARCHIVE::CREATE | ZIPARCHIVE::OVERWRITE) === true) {
         $zip->extractTo(SRC_DIR);
         $zip->close();
 
